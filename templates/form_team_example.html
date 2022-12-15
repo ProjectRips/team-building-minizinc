@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/fc-4.1.0/fh-3.2.4/kt-2.7.0/r-2.3.0/rg-1.2.0/rr-1.2.8/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.css" />
+
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.datatables.net/v/bs5/jq-3.6.0/jszip-2.5.0/dt-1.12.1/af-2.4.0/b-2.2.3/b-colvis-2.2.3/b-html5-2.2.3/b-print-2.2.3/cr-1.5.6/date-1.1.2/fc-4.1.0/fh-3.2.4/kt-2.7.0/r-2.3.0/rg-1.2.0/rr-1.2.8/sc-2.0.7/sb-1.3.4/sp-2.0.2/sl-1.4.0/sr-1.1.1/datatables.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="{{ url_for('static',filename='script/form.js') }}"></script>
+  <title>INVERSI - Best Team Building Tool</title>
+</head>
+
+<body id="page-body">
+  <nav class="navbar navbar-expand-md">
+    <div class="navbar-brand">INVERSI</div>
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">HOME</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('form_team_example_page') }}">EXAMPLE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('form_team_page') }}">TEAM</a>
+        </li>
+    </ul>
+  </nav>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="mx-auto fw-bolder text-center fs-1">Example Usage</p>
+        <div>
+          <div style="padding:20px;">
+            <p>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul class=flashes>
+                  {% for message in messages %}
+                  <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              {% endwith %}
+            </p>
+            <form id="form-team" class="rounded-form mx-auto" method="post" action="/form-team" enctype="multipart/form-data">
+              <dl>
+                <div class="team-form mt-4 mx-auto">
+                  <div class="row align-items-start">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="fw-bolder form-label label-white">Number of Persons</label>
+                        <input value="60" name="num_persons" class="form-control" type="number"
+                          placeholder="Default input" aria-label="default input example" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="fw-bolder form-label label-white">Number of Teams</label>
+                        <input value="10" name="num_teams" class="form-control" type="number"
+                          placeholder="Default input" aria-label="default input example" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="fw-bolder form-label label-white">Max Number of persons from the same
+                          service in a team (Optional)</label>
+                        <input value="4" name="num_max_same" class="form-control" type="number"
+                          placeholder="Default input" aria-label="default input example">
+                      </div>
+                      <div id="status-constraint-container">
+                        
+                
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="fw-bolder form-label label-white">Number of Services</label>
+                        <input value="6" id="num_services" name="num_services" type="number" required
+                          class="form-control" id="mb-4">
+                      </div>
+                      <div id="service-container" class="mb-3">
+                        <label for="exampleFormControlInput1" class="fw-bolder form-label label-white">Services</label>
+                      </div>
+
+                    </div>
+                    <div class="col">
+                      <div id="status-container" class="mb-3">
+                        <div id="service-pair-container" class="mb-3">
+                          <div class="d-flex mb-3">
+                            <label for="exampleFormControlInput1" class="fw-bolder form-label label-white">Services Pairing </label>
+                            <button id="add-btn-pair" type="button" class="btn btn-success mx-2">Add</button>
+                            <button id="remove-btn-pair" type="button" class="btn btn-dark mx-2">Remove</button>
+                          </div>
+                          <input type="hidden" value="2" id="total_service_pairing">
+                          <div class="form-group mb-2">
+                            <input value="1 NOT 2" type="text" name="service_pairing[]" id="service_pairing_1"
+                              required class="form-control" placeholder="ex: A NOT B">
+                          </div>
+                          <div class="form-group mb-2">
+                            <input value="5 NOT 6" type="text" name="service_pairing[]" id="service_pairing_2"
+                              required class="form-control" placeholder="ex: A NOT B">
+                          </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                          <label for="exampleFormControlInput1" class="fw-bolder form-label label-white">Status </label>
+                          <button id="add-btn-status" type="button" class="btn btn-success mx-2">Add</button>
+                          <button id="remove-btn-status" type="button" class="btn btn-dark mx-2">Remove</button>
+                        </div>
+                        <input type="hidden" value="2" name="total_status" id="total_status">
+                        <div class="form-group mb-2">
+                          <input value="Intern" type="text" name="statuses[]" id="status_1" required
+                            class="form-control" placeholder="Any status name">
+                        </div>
+                        <div class="form-group mb-2">
+                          <input value="Employee" type="text" name="statuses[]" id="status_2" required
+                            class="form-control" placeholder="Any status name">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </p>
+              </dl>
+              <p>
+              <div class="wrapper col-4 mx-auto text-center">
+                <button class="btn btn-warning rounded-pill mt-4 mx-auto p-3">
+                  <span class="fs-3 fw-bolder">Submit</span>
+                  <div class="success">
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 29.756 29.756"
+                      style="enable-background:new 0 0 29.756 29.756;" xml:space="preserve">
+
+                      <path
+                        d="M29.049,5.009L28.19,4.151c-0.943-0.945-2.488-0.945-3.434,0L10.172,18.737l-5.175-5.173   c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.752   c0.944,0.943,2.489,0.943,3.433,0L29.049,8.442C29.991,7.498,29.991,5.953,29.049,5.009z" />
+                    </svg>
+                  </div>
+                </button>
+              </div>
+            </form>
+
+            <div class="row row-cols-lg-4 row-cols-1 img-container ">
+              {% if teams %}
+                {% for team in teams %}
+                <div class="col img-prev">
+                  <br>
+                  <p class="result mx-auto">{{ team }}</p>
+                </div>
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer" class="container-fluid bg-color-footer">
+    <footer class="flex-wrap align-items-center py-3 my-4 mx-auto">
+      <div class="col-md-12 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+        <span class="text-muted label-white text-center width-100">© 2022 INVERSI, Inc</span>
+      </div>
+
+    </footer>
+  </div>
+
+
+
+
+
+
+
+</body>
+
+</html>

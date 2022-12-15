@@ -1,0 +1,304 @@
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only C:\Users\ricky\AppData\Local\Temp\mzn_fragmentirnw31gq.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('objective', <class 'numbers.Number'>), ('x', <class 'int'>), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datad3nxizds.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datacztgtfv6.json --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datafv_4072d.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datamjhdfi2y.json --json-stream"
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-6' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-5' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datasmlf74xc.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_dataxvkczooo.json --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_dataifpqbnsy.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_data6nlutju2.json --json-stream"
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-9' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-8' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datan2204m93.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions --all-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datas6mlao4c.json --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only C:\Users\ricky\AppData\Local\Temp\mzn_fragmentxqtp1zwd.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('x', typing.List[int]), ('obj', <class 'int'>), ('_output_item', <class 'str'>), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_data2rqmpot9.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_data81mo_u4a.json --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datahuyx3aky.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_dataswv24tub.json --json-stream"
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-12' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_data2nkdfq0y.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions --all-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datagk5i36iy.json --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --model-interface-only team.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('team', typing.List[int]), ('team3', typing.List[typing.List[int]]), ('_output_item', <class 'str'>), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions team.mzn --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only team.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('team', typing.List[int]), ('team3', typing.List[typing.List[int]]), ('_output_item', <class 'str'>), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions team.mzn --json-stream"
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-17' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-16' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --model-interface-only team.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('team', typing.List[int]), ('team3', typing.List[typing.List[int]]), ('_output_item', <class 'str'>), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions team.mzn --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --model-interface-only team.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('team', typing.List[int]), ('team3', typing.List[typing.List[int]]), ('_output_item', <class 'str'>), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.chuffed.chuffed@0.10.4 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions team.mzn --json-stream"
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only team.mzn --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('team', typing.List[int]), ('team3', typing.List[typing.List[int]]), ('_output_item', <class 'str'>), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions team.mzn --json-stream"
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-22' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-21' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datarfer4iow.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions --all-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datam5eqasqn.json --json-stream"
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-19' coro=<Instance.solve_async() done, defined at c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py:212> exception=UnboundLocalError("local variable 'proc' referenced before assignment")>
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 380, in solutions
+    proc = await self._driver._create_process(cmd, solver=solver)
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\driver.py", line 284, in _create_process
+    proc = await create_subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\subprocess.py", line 236, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 1626, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\asyncio\base_events.py", line 491, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 250, in solve_async
+    async for result in self.solutions(
+  File "c:\Users\ricky\AppData\Local\Programs\Python\Python38\lib\site-packages\minizinc\instance.py", line 453, in solutions
+    proc.terminate()
+UnboundLocalError: local variable 'proc' referenced before assignment
+DEBUG:minizinc:CLIDriver:run -> command: "c:\Program Files\MiniZinc\minizinc.EXE --solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --model-interface-only nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_dataj30xi6fy.json --json-stream"
+DEBUG:minizinc:CLIInstance:analyse -> output fields: [('q', typing.List[int]), ('_checker', <class 'str'>)]
+DEBUG:minizinc:CLIDriver:create_process -> program: c:\Program Files\MiniZinc\minizinc.EXE args: "--solver org.gecode.gecode@6.3.0 --allow-multiple-assignments --output-mode json --output-time --output-objective --output-output-item --statistics --intermediate-solutions --all-solutions nqueens.mzn C:\Users\ricky\AppData\Local\Temp\mzn_datatsc0yej0.json --json-stream"
