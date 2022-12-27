@@ -127,17 +127,42 @@ solve :: int_search(team, first_fail, indomain_median, complete) satisfy;
 
 constraint
 
+  forall(t in teams) (
+      forall(f in 1..num_services) (
+          sum(person in service[f]) ( bool2int(team[person] == t) ) <= 4
+      )
+  )
+;
+
+constraint
+
   forall(p1 in service[service1], p2 in service[service2]) (team[p1] != team[p2]) /\
-  forall(p5 in service[service5], p6 in service[service6]) (team[p5] != team[p6]) /\
+  forall(p5 in service[service5], p6 in service[service6]) (team[p5] != team[p6]) 
+;
+
+constraint
+
   forall(c in 1..num_coaching) (team[coaching[c,1]]==team[coaching[c,2]])
+;
 
- /\
+constraint
 
+ 
+ (team[0] = team[33] /\ team[0] = team[22] /\ team[0] = team[11]) 
+
+
+;
+
+
+constraint
+
+ 
  (team[5] = team[41] \/ team[5] = team[51]) /\
-
+ 
  (team[15] = team[40] \/ team[15] = team[51]) /\
+ 
+ (team[25] = team[24] \/ team[25] = team[50]) 
 
- (team[25] = team[24] \/ team[25] = team[50])
 
 ;
 

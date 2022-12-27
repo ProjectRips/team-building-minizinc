@@ -64,11 +64,10 @@
     color: white;
   }
 
-body{
-    background-color: #C2CEB0;
-    font-family: 'Radio Canada', sans-serif;
-
-}    
+/* body{
+  background-color: #C2CEB0;
+  font-family: 'Radio Canada', sans-serif;
+}     */
 
 .card{
     max-width: 300px;
@@ -137,6 +136,9 @@ h3{
   body{
     background: #f4f4f4;
     height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
   
   .wrapper{
@@ -336,12 +338,13 @@ h3{
 
 
 #footer {
-  position: relative;
-  bottom: 0;
-  transform: translateY(-100%);
-  margin-top: 100px;
+  margin-top: auto;
 }
 
 
 
 /* form table */
+
+input[name$="num"]{
+  pointer-events: none !important;
+}
