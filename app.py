@@ -46,7 +46,7 @@ def post_form_team():
     services = request.form.getlist("services[]")
     statuses = request.form.getlist("statuses[]")
     input_max_status = request.form.getlist("input_max_status[]")
-
+    example = request.form.get("example")
 
 
     num_max_same = ""
@@ -54,28 +54,23 @@ def post_form_team():
     if request.form.get("num_max_same") != "" and request.form.get("num_max_same") != None :
         num_max_same = request.form.get("num_max_same")
     
-
-
-    # num_max_emp = ""
-    # num_max_intern = ""
-
-    # if request.form.get("num_max_same") != "" and request.form.get("num_max_same") != None:
-    #     num_max_same = int(request.form.get("num_max_same"))
-    
-    # if request.form.get("num_max_emp") != "" and request.form.get("num_max_emp") != None:
-    #     num_max_emp = int(request.form.get("num_max_emp"))
-    
-    # if request.form.get("num_max_intern") != "" and request.form.get("num_max_intern") != None:
-    #     num_max_intern = int(request.form.get("num_max_intern"))
-
-    return redirect(url_for('form_render_table', 
+    if(example == "true"):
+        return redirect(url_for('form_render_example_table', 
                             num_persons=num_persons, 
                             num_teams=num_teams, 
                             num_services=num_services,
                             num_max_same=num_max_same,
                             input_max_status=input_max_status,
-                            # num_max_emp=num_max_emp,
-                            # num_max_intern=num_max_intern,
+                            services_pairing=services_pairing,
+                            services=services,
+                            statuses=statuses))
+    else: 
+         return redirect(url_for('form_render_table', 
+                            num_persons=num_persons, 
+                            num_teams=num_teams, 
+                            num_services=num_services,
+                            num_max_same=num_max_same,
+                            input_max_status=input_max_status,
                             services_pairing=services_pairing,
                             services=services,
                             statuses=statuses))
@@ -101,18 +96,7 @@ def post_form_team_example():
     if request.form.get("num_max_same") != "" and request.form.get("num_max_same") != None :
         num_max_same = request.form.get("num_max_same")
     
-   
-    # num_max_emp = ""
-    # num_max_intern = ""
 
-    # if request.form.get("num_max_same") != "" and request.form.get("num_max_same") != None:
-    #     num_max_same = int(request.form.get("num_max_same"))
-    
-    # if request.form.get("num_max_emp") != "" and request.form.get("num_max_emp") != None:
-    #     num_max_emp = int(request.form.get("num_max_emp"))
-    
-    # if request.form.get("num_max_intern") != "" and request.form.get("num_max_intern") != None:
-    #     num_max_intern = int(request.form.get("num_max_intern"))
 
     return redirect(url_for('form_render_table', 
                             num_persons=num_persons, 
@@ -131,6 +115,11 @@ def post_form_team_example():
 def form_render_table():
     return render_template("form_table.html")
 
+@app.route('/form-table-example')
+def form_render_example_table():
+    return render_template("form_table_example.html")
+
+@app.route('/form-table-example', methods=['POST'])
 @app.route('/form-table', methods=['POST'])
 def form_table_page():
    
@@ -157,17 +146,26 @@ def form_table_page():
     
     input_max_status = eval(request.form.get("input_max_status"))
 
-    # if request.form.get("num_max_emp") != "" and request.form.get("num_max_emp") != None :
-    #     num_max_emp = request.form.get("num_max_emp")
-
-    # if request.form.get("num_max_intern") != "" and request.form.get("num_max_intern") != None :
-    #     num_max_intern = request.form.get("num_max_intern")
-
 
     services_pairing = request.form.get("services_pairing")
     services_data = eval(request.form.get("services"))
     statuses = eval(request.form.get("statuses"))
 
+    count_must = 0
+    for i in range(int(num_persons)):
+        must = request.form.get("row-" + str(i) + "-must")
+        if(must != "" and must != None):
+            count_must += 1
+    
+    count_want_with = 0
+    for i in range(int(num_persons)):
+        want_with = request.form.get("row-" + str(i) + "-want")
+        if(want_with != "" and want_with != None):
+            count_want_with += 1
+
+
+    count_must2 = 0
+    count_want_with2 = 0
     for i in range(int(num_persons)):
         num = request.form.get("row-" + str(i) + "-num")
         id = request.form.get("row-" + str(i) + "-id")
@@ -192,24 +190,32 @@ def form_table_page():
             coach_constraint += "       " + id + "," + coach + ",\n"
 
         if(must != "" and must != None):
+            count_must2 += 1
             splitter = must.split(",")
-            must_code += " /\\\n\n ("
+            must_code += " \n ("
             for m in range(len(splitter)):
                 must_code += "team[" + id + "] = team[" + splitter[m] + "]"
                 if m != len(splitter) - 1:
                     must_code += " /\\ "
-
-            must_code += ") \n"
+            if(count_must != count_must2):
+                must_code += ") /\\\n"
+            elif(count_must == count_must2):
+                must_code += ") \n"
+          
 
         if(want_with != "" and want_with != None):
+            count_want_with2 += 1
             splitter = want_with.split(",")
-            ww += " /\\\n\n ("
+            ww += " \n ("
             for j in range(len(splitter)):
                 ww += "team[" + id + "] = team[" + splitter[j] + "]"
                 if j != len(splitter) - 1:
                     ww += " \/ "
 
-            ww += ")"
+            if(count_want_with != count_want_with2):
+                ww += ") /\\\n"
+            elif(count_want_with == count_want_with2):
+                ww += ") \n"
 
         row_data = {
             "id": id,
@@ -253,11 +259,14 @@ def form_table_page():
     pair_str = pair_str.split(", ")
 
     constraint_pair = ""
-    for p in pair_str:
-        arr = p.split(" ")
-        if arr[1] == "NOT":
-            constraint_pair += "  forall(p" + arr[0] + " in service[service" + arr[0] + "], p" + arr[2] + " in service[service" + arr[2] + "]) (team[p" + arr[0] + "] != team[p" + arr[2] + "]) /\\\n"
-        
+    print(pair_str)
+    if(len(pair_str) != 1 and pair_str[0] != ""):
+        for p in pair_str:
+            arr = p.split(" ")
+            if arr[1] == "NOT":
+                constraint_pair += "  forall(p" + arr[0] + " in service[service" + arr[0] + "], p" + arr[2] + " in service[service" + arr[2] + "]) (team[p" + arr[0] + "] != team[p" + arr[2] + "]) "
+            if p != pair_str[-1]:
+                constraint_pair += "/\\\n"
     
     # declare library
     minizinc_code = """include "globals.mzn";\n"""
@@ -323,38 +332,28 @@ def form_table_page():
             elif input_max_status[i] != "":
                 minizinc_code += "      sum(emp_st_"+ str(i) + " in persons where persons_status[emp_st_" + str(i) + "+1,2] ==" + str(i) + ") ( bool2int(team[emp_st_"+ str(i) + "] = t ) )=" + input_max_status[i] +"\n"
         minizinc_code += "  )\n"
-    
-    if(constraint_pair != "" and constraint_pair != None) and (bool_empty_array == True or (num_max_same != "" and num_max_same != None)):
-        minizinc_code += "  /\\\n"
-    # if(num_max_emp != "" or num_max_intern != "" or num_max_same != ""):
-    #     minizinc_code += "  forall(t in teams) (\n"
+    minizinc_code += ";\n\n"
 
-    # if(num_max_emp != "" and num_max_emp != None):
-    #     minizinc_code += "      sum(existingemployee in persons where persons_status[existingemployee+1,2] == 1) ( bool2int(team[existingemployee] = t ) )=" + num_max_emp +"\n"
-   
-    # if(((num_max_intern != "" and num_max_intern != None) or (num_max_same != "" and num_max_same != None)) and (num_max_emp != "" and num_max_emp != None)):
-    #     minizinc_code += "      /\\\n"
 
-    # if(num_max_intern != "" and num_max_intern != None):
-    #     minizinc_code += "      sum(newemployee in persons where persons_status[newemployee+1,2] == 0) ( bool2int(team[newemployee] = t ) )= " + num_max_intern +"\n"
+    if constraint_pair != "":
+        minizinc_code += "constraint\n\n"
+        minizinc_code += constraint_pair + "\n"
+        minizinc_code += ";\n\n"
 
-    # if((num_max_same != "" and num_max_same != None) and (num_max_intern != "" and num_max_intern != None)):
-    #     minizinc_code += "      /\\\n"
+    minizinc_code += "constraint\n\n"
+    minizinc_code += "  forall(c in 1..num_coaching) (team[coaching[c,1]]==team[coaching[c,2]])\n"
+    minizinc_code += ";\n\n"
 
-    # if(num_max_same != "" and num_max_same != None):
-    #     minizinc_code += "      forall(f in 1..num_services) (\n"
-    #     minizinc_code += "          sum(person in service[f]) ( bool2int(team[person] == t) ) <= " + num_max_same + "\n"
-    #     minizinc_code += "      )\n"
+    if must_code != "":
+        minizinc_code += "constraint\n\n"
+        minizinc_code += must_code + "\n\n"
+        minizinc_code += ";\n\n\n"
 
-    # if(num_max_emp != "" or num_max_intern != "" or num_max_same != ""):
-    #     minizinc_code += "  )\n"
-    #     minizinc_code += "  /\\\n\n"
 
-    minizinc_code += constraint_pair
-    minizinc_code += "  forall(c in 1..num_coaching) (team[coaching[c,1]]==team[coaching[c,2]])"
-    minizinc_code += must_code + "\n\n"
-    minizinc_code += ww + "\n\n"
-    minizinc_code += ";\n\n\n"
+    if ww != "":
+        minizinc_code += "constraint\n\n"
+        minizinc_code += ww + "\n\n"
+        minizinc_code += ";\n\n\n"
 
 
     # symmetry breaking
@@ -399,12 +398,7 @@ output ["{"] ++ [
     file.close()
 
     result = mnz_teams_building("team_code.mzn")
-    # print(result)
 
-    # print(result.status)
-
-    # result = str(result.solution)
-    # result = eval(result)
 
     solution_list = []
 

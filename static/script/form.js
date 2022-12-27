@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-  disable_coach();
+  // disable_coach();
   add_rmv_services();
   add_rmv_status_max_person();
-
+  add_rmv_example_services()
 
   function disable_coach(){
     var status = document.querySelectorAll('[name$="-status"]');
@@ -17,7 +17,7 @@ $(document).ready(function () {
     var count = $('#total_status').val();
 
     if(count == 0 || count == ""){
-      $('#status-constraint-container"]').empty();
+      $('#status-constraint-container').empty();
     }
     else if(count > 0){
 
@@ -44,7 +44,7 @@ $(document).ready(function () {
       $('#service-container').empty();
       $("#service-container").append(label);
       for(let i = 1; i <= count; i++){
-        $("#service-container").append("<div class='form-group mb-2'><input type='text' name='services[]' value='service" + i +  "' required class='services form-control' id='mb-4' placeholder='service" + i +  "'></div>");
+        $("#service-container").append("<div class='form-group mb-2'><input type='text' name='services[]' value='' required class='services form-control' id='mb-4' placeholder='service" + i +  "'></div>");
       }
     }
     else{
@@ -52,6 +52,28 @@ $(document).ready(function () {
     }
 
   }
+
+  function add_rmv_example_services(){
+    var count = $('#num_services').val();
+    
+    if(count == 0 || count == ""){
+      $('#service-container-example').empty();
+    }
+    else if(count > 0){
+      var label = '<label for="exampleFormControlInput1" class="form-label">Services</label>';
+
+      $('#service-container-example').empty();
+      $("#service-container-example").append(label);
+      for(let i = 1; i <= count; i++){
+        $("#service-container-example").append("<div class='form-group mb-2'><input type='text' name='services[]' value='service " + i.toString() + "' required class='services form-control' id='mb-4' placeholder='service" + i +  "'></div>");
+      }
+    }
+    else{
+      $('#service-container-example').empty();
+    }
+
+  }
+
 
   function add_rmv_status(){
     var count = $('#num_status').val();
@@ -117,6 +139,7 @@ $(document).ready(function () {
 
   $(document).on('change', '#num_services', function(){
     add_rmv_services();
+    add_rmv_example_services();
   });
 
 
