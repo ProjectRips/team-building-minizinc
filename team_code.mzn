@@ -148,15 +148,6 @@ constraint
 constraint
 
  
- (team[0] = team[33] /\ team[0] = team[22] /\ team[0] = team[11]) 
-
-
-;
-
-
-constraint
-
- 
  (team[5] = team[41] \/ team[5] = team[51]) /\
  
  (team[15] = team[40] \/ team[15] = team[51]) /\
