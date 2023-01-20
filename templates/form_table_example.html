@@ -105,12 +105,12 @@
 
               {% if num_max_intern %}
               <input type="hidden" id="num_max_intern" name="num_max_intern" value="{{num_max_intern}}">
-              {% endif %} -->
+              {% endif %}
 
 
               <thead>
                 <tr>
-                  <th>Index</th>
+                  <th style="width: 150px !important;">Index</th>
                   <th>ID</th>
                   <th>Name</th>
                   <th>Status</th>
@@ -126,7 +126,7 @@
                   {% set size = num_persons | string | length %}
                 <tr>
                   <td>
-                    <input type="text" id="row-{{i}}-num" name="row-{{i}}-num" value="{{i}}" size="{{size}}" width="auto">
+                    <input type="text" id="row-{{i}}-num" name="row-{{i}}-num" value="{{i}}">
                   </td>
                   <td>
                     <input type="text" id="row-{{i}}-id" name="row-{{i}}-id" value="{{i}}">
@@ -143,7 +143,7 @@
                         {% else %}
                       <option value="{{status_itr}}">
                         {% endif %}
-                        {{status_itr+1}}. {{statuses[status_itr]}}
+                         {{statuses[status_itr]}}
                       </option>
                       {% endfor %}
                       {% else %}
@@ -153,7 +153,7 @@
                         {% else %}
                       <option value="{{status_itr}}" selected="selected">
                         {% endif %}
-                        {{status_itr+1}}. {{statuses[status_itr]}}
+                         {{statuses[status_itr]}}
                       </option>
                       {% endfor %}
                       {% endif %}
@@ -204,7 +204,7 @@
                         <option value="{{s_itr+1}}">
                           {% endif %}
 
-                          {{s_itr+1}}. {{services[s_itr]}}
+                           {{services[s_itr]}}
                         </option>
 
                         {% endfor %}
@@ -216,7 +216,7 @@
                           {% else %}
                           <option value="{{s_itr+1}}">
                             {% endif %}
-                            {{s_itr+1}}. {{services[s_itr]}}
+                             {{services[s_itr]}}
                           </option>
                           {% endfor %}
 
@@ -227,7 +227,7 @@
                             {% else %}
                             <option value="{{s_itr+1}}">
                               {% endif %}
-                              {{s_itr+1}}. {{services[s_itr]}}
+                               {{services[s_itr]}}
                             </option>
                             {% endfor %}
                             {% elif i > 44 and i <= 49 %} {% for s_itr in range(0, services|length) %} {% if s_itr==3 %}
@@ -235,7 +235,7 @@
                               {% else %}
                               <option value="{{s_itr+1}}">
                                 {% endif %}
-                                {{s_itr+1}}. {{services[s_itr]}}
+                                 {{services[s_itr]}}
                               </option>
                               {% endfor %}
                               {% elif i > 49 and i <= 54 %} {% for s_itr in range(0, services|length) %} {% if s_itr==4 %}
@@ -243,7 +243,7 @@
                                 {% else %}
                                 <option value="{{s_itr+1}}">
                                   {% endif %}
-                                  {{s_itr+1}}. {{services[s_itr]}}
+                                   {{services[s_itr]}}
                                 </option>
                                 {% endfor %}
                                 {% elif i > 54 and i <= 59 %} {% for s_itr in range(0, services|length) %} {% if s_itr==5
@@ -251,7 +251,7 @@
                                   {% else %}
                                   <option value="{{s_itr+1}}">
                                   {% endif %}
-                                    {{s_itr+1}}. {{services[s_itr]}}
+                                     {{services[s_itr]}}
                                   </option>
                                   {% endfor %}
                                 {% else %} {% for s_itr in range(0, services|length) %} {% if s_itr==5
@@ -259,7 +259,7 @@
                                     {% else %}
                                     <option value="{{s_itr+1}}">
                                     {% endif %}
-                                      {{s_itr+1}}. {{services[s_itr]}}
+                                       {{services[s_itr]}}
                                     </option>
                                     {% endfor %}
   

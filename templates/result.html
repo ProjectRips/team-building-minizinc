@@ -60,85 +60,96 @@
       Form team based on your input
     </h1>
 
+    {% set result = request.args.getlist('result') %}
+    <br>
+    {% set json_data_rows = request.args.getlist('json_data_rows') %}
+    <br>
+    {% set services_data = request.args.getlist('services_data') %}
+    <br>
+    {% set statuses = request.args.getlist('statuses') %}
+
     <div>
       <div id="table-div" style="padding:20px;">
         <input type="hidden" id="sum-soln" value="{{result|length}}" />
 
         {% if result|length == 0 %}
 
-          <p class="text-center">Team formation is unsatisfiable. Please try again.</p>
+        <p class="text-center">Team formation is unsatisfiable. Please try again.</p>
 
         {% elif result|length > 0 %}
 
-          <select id="solution-select" class="form-select mb-4" aria-label="Default select example">
-            {% for k in range(result|length -1) %}
-            {% if k == 0 %}
-            <option value="{{k+1}}" selected>{{k+1}}</option>
+        <select id="solution-select" class="form-select mb-4" aria-label="Default select example">
+          {% for k in range(result|length -1) %}
+          {% if k == 0 %}
+          <option value="{{k+1}}" selected>{{k+1}}</option>
+          {% else %}
+          <option value="{{k+1}}">{{k+1}}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+
+        {% if result and json_data_rows and services_data %}
+        <div class="button-export-group d-flex">
+          <button id="export-xls-btn" class="mr-4 btn btn-danger">Export to XLS</button>
+          <button id="export-csv-btn" class="mr-4 btn btn-success">Export to CSV</button>
+        </div>
+        {% endif %}
+
+        {% for k in range(result|length) %}
+        <div id="container-result-{{k}}">
+          <table id="team-table-all" class="table table-dark table-hover table-bordered">
+            {% if result %}
+            <tbody>
+              <tr class="noBorderFirst">
+                <td scope="col" colspan="5" class="text-center fs-4 bg-color"></td>
+              </tr>
+            </tbody>
+                {% set result_ = result[k] | replace("'", '"') | to_dict  %}
+            {% for key, value in result_.items() %}
+            <tbody>
+              <tr>
+                <th scope="col" colspan="5" class="text-center fs-4">{{key}}</th>
+              </tr>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+                <th scope="col">Services</th>
+              </tr>
+            </tbody>
+            <tbody>
+              {% for v in value %}
+              <tr>
+                {% set json_data_rows_ = json_data_rows[v]| replace("'", '"') | to_dict  %}
+
+                <th scope="row">{{json_data_rows_["num"]}}</th>
+                <td>{{json_data_rows_["id"]}}</td>
+                <td>{{json_data_rows_["name"]}}</td>
+                <td>{{statuses[json_data_rows_["status"]|int]}}</td>
+                <td>{{services_data[json_data_rows_["service"]|int-1]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            {% if not loop.last %}
+            <tbody>
+              <tr class="noBorder">
+                <td scope="col" colspan="5" class="text-center fs-4 bg-color"></td>
+              </tr>
+            </tbody>
             {% else %}
-            <option value="{{k+1}}">{{k+1}}</option>
+            <tbody>
+              <tr class="noBorderLast">
+                <td scope="col" colspan="5" class="text-center fs-4"></td>
+              </tr>
+            </tbody>
             {% endif %}
             {% endfor %}
-          </select>
-
-          {% if result and json_data_rows and services_data %}
-          <div class="button-export-group d-flex">
-            <button id="export-xls-btn" class="mr-4 btn btn-danger">Export to XLS</button>
-            <button id="export-csv-btn" class="mr-4 btn btn-success">Export to CSV</button>
-          </div>
+          </table>
           {% endif %}
 
-          {% for k in range(result|length) %}
-          <div id="container-result-{{k}}">
-            <table id="team-table-all" class="table table-dark table-hover table-bordered">
-              {% if result %}
-              <tbody>
-                <tr class="noBorderFirst">
-                  <td scope="col" colspan="5" class="text-center fs-4 bg-color"></td>
-                </tr>
-              </tbody>
-              {% for key, value in result[k].items() %}
-              <tbody>
-                <tr>
-                  <th scope="col" colspan="5" class="text-center fs-4">{{key}}</th>
-                </tr>
-                <tr>
-                  <th scope="col">Index</th>
-                  <th scope="col">ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Services</th>
-                </tr>
-              </tbody>
-              <tbody>
-                {% for v in value %}
-                <tr>
-                  <th scope="row">{{json_data_rows[v]["num"]}}</th>
-                  <td>{{json_data_rows[v]["id"]}}</td>
-                  <td>{{json_data_rows[v]["name"]}}</td>
-                  <td>{{statuses[json_data_rows[v]["status"]|int]}}</td>
-                  <td>{{services_data[json_data_rows[v]["service"]|int-1]}}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-              {% if not loop.last %}
-              <tbody>
-                <tr class="noBorder">
-                  <td scope="col" colspan="5" class="text-center fs-4 bg-color"></td>
-                </tr>
-              </tbody>
-              {% else %}
-              <tbody>
-                <tr class="noBorderLast">
-                  <td scope="col" colspan="5" class="text-center fs-4"></td>
-                </tr>
-              </tbody>
-              {% endif %}
-              {% endfor %}
-            </table>
-            {% endif %}
-
-          </div>
-          {% endfor %}
+        </div>
+        {% endfor %}
         {% endif %}
 
 

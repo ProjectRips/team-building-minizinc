@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  // disable_coach();
+  disable_coach();
   add_rmv_services();
   add_rmv_status_max_person();
   add_rmv_example_services()
@@ -9,9 +9,11 @@ $(document).ready(function () {
     var status = document.querySelectorAll('[name$="-status"]');
     var coach = document.querySelectorAll('[name$="-supervise"]');
     for (var i = 0; i < coach.length; i++) {
-      coach[i].disabled = (status[i].options.selectedIndex == 0)
+      let status_ = status[i].options[status[i].options.selectedIndex].text.toLowerCase().trim(); 
+      coach[i].disabled = (status_ == "intern")
     }
   }
+
 
   function add_rmv_status_max_person(){
     var count = $('#total_status').val();
@@ -116,6 +118,8 @@ $(document).ready(function () {
     
   });
 
+  table.columns.adjust().draw();
+
   $(document).on('click', '[name$="-status"]', function(){
     disable_coach();
   });
@@ -123,7 +127,7 @@ $(document).ready(function () {
 
   $(document).on('click', '#add-btn-pair', function(){
     var count_no = parseInt($('#total_service_pairing').val())+1;
-    var new_input="<div class='form-group mb-2'><input type='text' name='service_pairing[]' id='service_pairing_"+count_no+"' required class='form-control' id='mb-4' placeholder='ex: A NOT B'></div>";
+    var new_input="<div class='form-group mb-2'><input type='text' name='service_pairing[]' id='service_pairing_"+count_no+"' required class='form-control' id='mb-4' placeholder='ex: 1 NOT 2'></div>";
     $('#service-pair-container').append(new_input);
     $('#total_service_pairing').val(count_no)
   });
