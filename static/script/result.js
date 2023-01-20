@@ -30,22 +30,6 @@ $(document).ready(function () {
     }
   }
 
-  function exportPDFFile() {
-    var todaydate = new Date();  //pass val varible in Date(val)
-    var dd = todaydate .getDate();
-    var mm = todaydate .getMonth()+1; //January is 0!
-    var yyyy = todaydate .getFullYear();
-    if(dd<10){  dd='0'+dd } 
-    if(mm<10){  mm='0'+mm } 
-    var datestring = dd+'-'+mm+'-'+yyyy;
-
-    $("#team-table-all").tableHTMLExport({
-      type: 'pdf',
-      orientation: 'p',
-      filename: `export_team_table_` + datestring + `.pdf`,
-
-    })
-  }
 
   function exportCSVFile() {
     var todaydate = new Date();  //pass val varible in Date(val)
@@ -86,9 +70,26 @@ $(document).ready(function () {
 
   $(document).on('click', '#export-xls-btn', exportReportToExcel);
   $(document).on('click', '#export-csv-btn', exportCSVFile);
-  $(document).on('click', '#export-pdf-btn', exportPDFFile);
   $(document).on('change', '#solution-select', updateTeamResult);
 
 
   updateTeamResult();
 });
+
+
+// function exportPDFFile() {
+//   var todaydate = new Date();  //pass val varible in Date(val)
+//   var dd = todaydate .getDate();
+//   var mm = todaydate .getMonth()+1; //January is 0!
+//   var yyyy = todaydate .getFullYear();
+//   if(dd<10){  dd='0'+dd } 
+//   if(mm<10){  mm='0'+mm } 
+//   var datestring = dd+'-'+mm+'-'+yyyy;
+
+//   $("#team-table-all").tableHTMLExport({
+//     type: 'pdf',
+//     orientation: 'p',
+//     filename: `export_team_table_` + datestring + `.pdf`,
+
+//   })
+// }

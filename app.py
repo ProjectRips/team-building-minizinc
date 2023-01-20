@@ -8,6 +8,9 @@ import json
 app = Flask(__name__)
 app.secret_key = "secret"
 
+@app.template_filter('to_dict')
+def to_dict(my_string):
+    return json.loads(my_string)
 
 def mnz_teams_building(path):
 
@@ -104,8 +107,6 @@ def post_form_team_example():
                             num_services=num_services,
                             num_max_same=num_max_same,
                             input_max_status=input_max_status,
-                            # num_max_emp=num_max_emp,
-                            # num_max_intern=num_max_intern,
                             services_pairing=services_pairing,
                             services=services,
                             statuses=statuses))
@@ -408,7 +409,8 @@ output ["{"] ++ [
         if x not in solution_list:
             solution_list.append(x)
     
-    return render_template('result.html', result=solution_list, json_data_rows=json_data_rows, services_data=services_data, statuses=statuses)
+    # return render_template('result.html', result=solution_list, json_data_rows=json_data_rows, services_data=services_data, statuses=statuses)
+    return redirect(url_for('result', result=solution_list, json_data_rows=json_data_rows, services_data=services_data, statuses=statuses))
 
 
 @app.route('/result')

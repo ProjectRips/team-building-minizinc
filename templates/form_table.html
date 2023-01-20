@@ -120,8 +120,7 @@
                 {% set size = num_persons | string | length %}
                 <tr>
                   <td>
-                    <input type="text" id="row-{{i}}-num" name="row-{{i}}-num" value="{{i}}" size="{{size}}"
-                      width="auto">
+                    <input type="text" id="row-{{i}}-num" name="row-{{i}}-num" value="{{i}}">
                   </td>
                   <td>
                     <input type="text" id="row-{{i}}-id" name="row-{{i}}-id" value="{{i}}">
@@ -133,16 +132,19 @@
                     <select id="status" size="1" id="row-{{i}}-status" name="row-{{i}}-status">
 
                       {% for status_itr in range(0, statuses|length) %}
-                      <option value="{{status_itr}}">
-                        {{status_itr+1}}. {{statuses[status_itr]}}
-                      </option>
+                        {% if status_itr == 0 %}
+                          <option value="{{status_itr}}" selected="selected">
+                            {{statuses[status_itr]}}
+                          </option>
+                        {% else %}
+                          <option value="{{status_itr}}">
+                            {{statuses[status_itr]}}
+                          </option>
+                        {% endif %}
                       {% endfor %}
 
-                      {% for status_itr in range(0, statuses|length) %}
-                      <option value="{{status_itr}}" selected="selected">
-                        {{status_itr+1}}. {{statuses[status_itr]}}
-                      </option>
-                      {% endfor %}
+                      
+
                     </select>
                   </td>
                   <td>
@@ -157,73 +159,15 @@
                   </td>
                   <td>
                     <select size="1" id="row-{{i}}-service" name="row-{{i}}-service">
-                      {% if i <= 19 %} {% for s_itr in range(0, services|length) %} {% if s_itr==0 %} <option
-                      value="{{s_itr+1}}" selected="selected">
-                      {% else %}
-                      <option value="{{s_itr+1}}">
-                        {% endif %}
-
-                        {{s_itr+1}}. {{services[s_itr]}}
-                      </option>
-
-                      {% endfor %}
-
-
-
-                      {% elif i > 19 and i <= 39 %} {% for s_itr in range(0, services|length) %} {% if s_itr==1 %}
+                      {% for s_itr in range(0, services|length) %} 
+                        {% if s_itr==0 %} 
                         <option value="{{s_itr+1}}" selected="selected">
                         {% else %}
                         <option value="{{s_itr+1}}">
-                          {% endif %}
-                          {{s_itr+1}}. {{services[s_itr]}}
+                        {% endif %}
+                           {{services[s_itr]}}
                         </option>
-                        {% endfor %}
-
-
-
-                        {% elif i > 39 and i <= 44 %} {% for s_itr in range(0, services|length) %} {% if s_itr==2 %}
-                          <option value="{{s_itr+1}}" selected="selected">
-                          {% else %}
-                          <option value="{{s_itr+1}}">
-                            {% endif %}
-                            {{s_itr+1}}. {{services[s_itr]}}
-                          </option>
-                          {% endfor %}
-                          {% elif i > 44 and i <= 49 %} {% for s_itr in range(0, services|length) %} {% if s_itr==3 %}
-                            <option value="{{s_itr+1}}" selected="selected">
-                            {% else %}
-                            <option value="{{s_itr+1}}">
-                              {% endif %}
-                              {{s_itr+1}}. {{services[s_itr]}}
-                            </option>
-                            {% endfor %}
-                            {% elif i > 49 and i <= 54 %} {% for s_itr in range(0, services|length) %} {% if s_itr==4 %}
-                              <option value="{{s_itr+1}}" selected="selected">
-                              {% else %}
-                              <option value="{{s_itr+1}}">
-                                {% endif %}
-                                {{s_itr+1}}. {{services[s_itr]}}
-                              </option>
-                              {% endfor %}
-                              {% elif i > 54 and i <= 59 %} {% for s_itr in range(0, services|length) %} {% if s_itr==5
-                                %} <option value="{{s_itr+1}}" selected="selected">
-                                {% else %}
-                                <option value="{{s_itr+1}}">
-                                {% endif %}
-                                  {{s_itr+1}}. {{services[s_itr]}}
-                                </option>
-                                {% endfor %}
-                              {% else %} {% for s_itr in range(0, services|length) %} {% if s_itr==5
-                                  %} <option value="{{s_itr+1}}" selected="selected">
-                                  {% else %}
-                                  <option value="{{s_itr+1}}">
-                                  {% endif %}
-                                    {{s_itr+1}}. {{services[s_itr]}}
-                                  </option>
-                                  {% endfor %}
-
-                              {% endif %}
-
+                      {% endfor %}
                     </select>
                   </td>
                 </tr>

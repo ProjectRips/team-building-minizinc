@@ -14,7 +14,6 @@ In our website to see how you can create your own team, first try see our exampl
 
 
 Our website front-end:
-![plot](./directory_1/directory_2/.../directory_n/plot.png)
 ![home](./static/readme/127.0.0.1_5000_.png)
 ![form-team-example](./static/readme/127.0.0.1_5000_form-team-example.png)
 ![form-team](./static/readme/127.0.0.1_5000_form-team.png)
