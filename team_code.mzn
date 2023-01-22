@@ -5,65 +5,65 @@ int: num_persons = 60;
 set of int: persons = 0..num_persons-1;
 array[1..num_persons, 1..2] of int: persons_status = 
   array2d(1..num_persons, 1..2, [
-        0,1,
+        0,0,
         1,1,
-        2,1,
+        2,0,
         3,1,
-        4,1,
+        4,0,
         5,1,
-        6,1,
+        6,0,
         7,1,
-        8,1,
+        8,0,
         9,1,
-        10,1,
+        10,0,
         11,1,
-        12,1,
+        12,0,
         13,1,
-        14,1,
+        14,0,
         15,1,
-        16,1,
+        16,0,
         17,1,
-        18,1,
+        18,0,
         19,1,
-        20,1,
+        20,0,
         21,1,
-        22,1,
+        22,0,
         23,1,
-        24,1,
+        24,0,
         25,1,
-        26,1,
+        26,0,
         27,1,
-        28,1,
+        28,0,
         29,1,
-        30,1,
+        30,0,
         31,1,
-        32,1,
+        32,0,
         33,1,
-        34,1,
+        34,0,
         35,1,
-        36,1,
+        36,0,
         37,1,
-        38,1,
+        38,0,
         39,1,
-        40,1,
+        40,0,
         41,1,
-        42,1,
+        42,0,
         43,1,
-        44,1,
+        44,0,
         45,1,
-        46,1,
+        46,0,
         47,1,
-        48,1,
+        48,0,
         49,1,
-        50,1,
+        50,0,
         51,1,
-        52,1,
+        52,0,
         53,1,
-        54,1,
+        54,0,
         55,1,
-        56,1,
+        56,0,
         57,1,
-        58,1,
+        58,0,
         59,1,
 ]);
 
@@ -92,9 +92,29 @@ array[1..num_services] of set of int: service = [
 ]; 
 
 
-int: num_coaching = 0;
+int: num_coaching = 20;
 array[1..num_coaching, 1..2] of int: coaching = 
   array2d(1..num_coaching, 1..2, [
+       1,0,
+       3,2,
+       5,4,
+       7,6,
+       9,8,
+       11,10,
+       21,20,
+       23,22,
+       25,24,
+       27,26,
+       29,28,
+       31,30,
+       41,40,
+       43,42,
+       45,46,
+       47,48,
+       51,50,
+       53,52,
+       55,56,
+       57,58,
 ]);
 
 array[persons] of var teams: team;
@@ -111,6 +131,10 @@ constraint
       forall(f in 1..num_services) (
           sum(person in service[f]) ( bool2int(team[person] == t) ) <= 4
       )
+  /\
+      sum(emp_st_0 in persons where persons_status[emp_st_0+1,2] ==0) ( bool2int(team[emp_st_0] = t ) )=3
+      /\
+      sum(emp_st_1 in persons where persons_status[emp_st_1+1,2] ==1) ( bool2int(team[emp_st_1] = t ) )=3
   )
 ;
 
@@ -124,6 +148,19 @@ constraint
 
   forall(c in 1..num_coaching) (team[coaching[c,1]]==team[coaching[c,2]])
 ;
+
+constraint
+
+ 
+ (team[5] = team[41] \/ team[5] = team[51]) /\
+ 
+ (team[15] = team[40] \/ team[15] = team[51]) /\
+ 
+ (team[25] = team[24] \/ team[25] = team[50]) 
+
+
+;
+
 
 constraint
   team[1] = 1 /\

@@ -172,7 +172,7 @@ $(document).ready(function () {
     let val_input = $(this).val();
 
     $('#status_max_number_'+input_num).remove();
-    $("#status-constraint-container").append('<div id="status_max_number_'+ input_num.toString() +'" class="mb-3"><label for="exampleFormControlInput1" id="label_max_status_' + input_num.toString() + '" class="fw-bolder form-label label-white">Max Number of ' + val_input + ' in a team (Optional)</label><input value="" id="input_max_status_' + input_num.toString() + ' name="input_max_status[]" class="form-control" type="number" placeholder="Default input" aria-label="default input example"></div>');
+    $("#status-constraint-container").append('<div id="status_max_number_'+ input_num.toString() +'" class="mb-3"><label for="exampleFormControlInput1" id="label_max_status_' + input_num.toString() + '" class="fw-bolder form-label label-white">Max Number of ' + val_input + ' in a team (Optional)</label><input value="" id="input_max_status_' + input_num.toString() + '" name="input_max_status[]" class="form-control" type="number" placeholder="Default input" aria-label="default input example"></div>');
   
   });
 
